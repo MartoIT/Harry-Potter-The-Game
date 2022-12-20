@@ -1,0 +1,35 @@
+
+body {
+    margin: 0;
+    font-family: 'consolas';
+}
+
+.game-view {
+    background-color: skyblue;
+    width: 100vw;
+    height: 100vh;
+}
+
+.start-screen {
+    margin-top: 45px;
+    text-align: center;
+    padding: 20px;
+    background-color: darkblue;
+    font-weight: bold;
+    position: absolute;
+    width: 250px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.hidden {
+    display: none;
+}
+
+.harry {
+    position: absolute;
+    background-image: url('/images/harry.jpeg');
+    background-size: cover;
+    width: 135px;
+    height: 110px;
+}
