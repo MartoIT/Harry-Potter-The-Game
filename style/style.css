@@ -33,3 +33,17 @@ body {
     width: 135px;
     height: 110px;
 }
+.voldemort{
+    position: absolute;
+    background-image: url('/images/Voldemor2.jpg');
+    background-size: cover;
+    width: 135px;
+    height: 110px;
+}
+.cloud{
+    position: absolute;
+    background-image: url('/images/cloud.png');
+    background-size: cover;
+    width: 135px;
+    height: 110px;
+}
