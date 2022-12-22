@@ -1,69 +1,74 @@
-const startGame =  document.querySelector('.start-screen');
-const playScreen =  document.querySelector('.play-screen');
+
+import { createHarry } from './createHeroes/createHarry.js'
+import { createVoldemort } from './createHeroes/createVoldemort.js'
+import { createClouds } from './createHeroes/clouds.js'
+import { stateHarry, stateVoldemort, stateClouds } from './statesOfHeroes/state.js'
+
+const startGame = document.querySelector('.start-screen');
+const playScreen = document.querySelector('.play-screen');
 startGame.addEventListener('click', gameStart);
 document.addEventListener('keydown', presKeyDown);
+let harry = createHarry(stateHarry);
+let voldemort = createVoldemort(stateVoldemort);
+let cloud = createClouds(stateClouds)
 
-const state = {
-    gameOver: false,
-    wizard: {
-        x: 50,
-        y: 50,
-        speed: 10,
-    },
-    keys: {},
-}
-
-function gameStart(e){
+function gameStart(e) {
     e.preventDefault();
-    startGame.classList.add('hidden'); 
+    startGame.classList.add('hidden');
     playScreen.classList.remove('hidden');
-    let harry = createHero(state);
     playScreen.appendChild(harry);
-    window.requestAnimationFrame(gameLoop);
+    playScreen.appendChild(voldemort);
+    playScreen.appendChild(cloud);
+    //window.requestAnimationFrame(gameLoop);
+    setInterval(gravity, 400);
+    setInterval(voldemortMove, 1000);
+    setInterval(cloudMove, 1000);
+   
+
 }
 
-function gameLoop(){
+// function gameLoop() {
 
-    window.requestAnimationFrame(gameLoop);
+//     window.requestAnimationFrame(gameLoop);
+// }
+
+function gravity() {
+    stateHarry.wizard.x += 20
+    playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
+
 }
 
-function createHero(state) {
-    console.log(state.wizard.x)
-    const hero = document.createElement('div');
-    hero.classList.add('harry');
-    hero.style.top = state.wizard.x + 'px';
-    hero.style.left = state.wizard.y + 'px';
-    return hero
+function voldemortMove() {
+    stateVoldemort.wizard.y -= 20
+    playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
 }
 
-function presKeyDown(e){
+function cloudMove() {
+    stateClouds.currentCloud.y -= 20
+    playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
+}
+function presKeyDown(e) {
     const currentKey = e.code;
-    if(currentKey === 'KeyS'){
-        //console.log(currentKey);
-       state.wizard.x += 30;
-        playScreen.replaceChildren(createHero(state))
-        //state = wizard.x -= 50
+    if (currentKey === 'ArrowDown') {
+        stateHarry.wizard.x += 30;
+        playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
     }
 
-    if(currentKey === 'KeyW'){
-        //console.log(currentKey);
-        state.wizard.x -= 30;
-        playScreen.replaceChildren(createHero(state))
-        //state = wizard.x -= 50
+    if (currentKey === 'ArrowUp') {
+        stateHarry.wizard.x -= 30;
+        playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
     }
 
-    if(currentKey === 'KeyA'){
-        //console.log(currentKey);
-       state.wizard.y -= 30;
-        playScreen.replaceChildren(createHero(state))
-        //state = wizard.x -= 50
+    if (currentKey === 'ArrowLeft') {
+        stateHarry.wizard.y -= 30;
+        playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
     }
 
-    if(currentKey === 'KeyD'){
-        //console.log(currentKey);
-        state.wizard.y += 30;
-        playScreen.replaceChildren(createHero(state))
-        //state = wizard.x -= 50
+    if (currentKey === 'ArrowRight') {
+        stateHarry.wizard.y += 30;
+        playScreen.replaceChildren(createHarry(stateHarry), createVoldemort(stateVoldemort), createClouds(stateClouds))
     }
 }
+
+
 
