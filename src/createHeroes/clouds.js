@@ -5,5 +5,18 @@ export function createClouds(stateClouds) {
     cloud.classList.add('cloud');
     cloud.style.top = stateClouds.currentCloud.x + 'px';
     cloud.style.left = stateClouds.currentCloud.y + 'px';
-    return cloud;
+    
+    return Object.create({}, {
+        domElement: {
+            get: () => cloud
+        },
+        x: {
+            get: () => parseInt(cloud.style.top),
+            set: value => (cloud.style.top = value + 'px')
+        },
+        y: {
+            get: () => parseInt(cloud.style.left),
+            set: value => (cloud.style.left = value + 'px')
+        }
+    })
 }
