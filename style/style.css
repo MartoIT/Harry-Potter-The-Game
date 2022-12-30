@@ -21,6 +21,18 @@ body {
     left: 50%;
     transform: translate(-50%);
 }
+.points {
+    
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    background-color: rgb(139, 0, 127);
+    font-weight: bold;
+    position: absolute;
+    width: 80px;
+    left: 4%;
+    transform: translate(-50%);
+}
 
 .hidden {
     display: none;
@@ -37,13 +49,20 @@ body {
     position: absolute;
     background-image: url('/images/Voldemor2.jpg');
     background-size: cover;
-    width: 135px;
-    height: 110px;
+    width: 100px;
+    height: 80px;
 }
 .cloud{
     position: absolute;
     background-image: url('/images/cloud.png');
     background-size: cover;
-    width: 135px;
-    height: 110px;
+    width: 110px;
+    height: 90px;
+}
+.magic{
+    position: absolute;
+    background-image: url('/images/lighting.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
 }
