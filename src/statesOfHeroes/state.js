@@ -1,5 +1,5 @@
 
-export const stateHarry = {
+export const newStateHarry = () => ({
     gameOver: false,
     wizard: {
         x: 50,
@@ -7,32 +7,40 @@ export const stateHarry = {
         speed: 10,
     },
     keys: {},
-}
+})
 
-export const stateVoldemort = {
+export const newStateVoldemort = () => ({
     wizard: {
         x: coordinatesX(),
         y: coordinatesY(),
         speed: 10,
     },
     keys: {},
-}
+})
 
 
-export const stateClouds = {
+export const newStateClouds = () => ({
     currentCloud: {
         x: coordinatesX(),
         y: coordinatesY(),
         speed: 10,
     },
     keys: {},
-}
+})
 
+export const newStateMagic = (x, y) => ({
+    currentMagic: {
+        x,
+        y
+       
+    }
+    
+})
 
-function coordinatesX() {
+export function coordinatesX() {
     return Math.floor(Math.random() * (700 - 30) + 30)
 }
-function coordinatesY() {
+export function coordinatesY() {
     return Math.floor(Math.random() * (1800 - 1600) + 1600)
 }
 
